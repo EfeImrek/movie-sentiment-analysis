@@ -1,100 +1,103 @@
-# 🎬 Movie Sentiment Analysis
-**Course:** DSA 210 - Introduction to Data Science  
-**Term:** Fall 2025–2026  
-**Author:** Yağiz Efe Imrek 
+# Movie-Reviews-Sentiment-Analysis
+
+## *Project Idea*
+
+This project aims to analyze public movie reviews and determine whether the sentiment expressed in each review is **positive**, **negative**, or **neutral**.  
+The main hypothesis is that textual patterns in user-generated reviews can accurately predict the sentiment of a viewer’s experience.  
+
+By applying **Natural Language Processing (NLP)** techniques to a large corpus of movie reviews, the study explores how linguistic features such as word frequency, emotion-related terms, and sentence structure influence sentiment classification.
 
 ---
 
-## 🎯 Project Motivation
-This project aims to analyze movie reviews and determine whether they express **positive** or **negative** emotions using data science and machine learning techniques.  
-The main goal is to explore public sentiment around movies and build a classifier that can automatically predict the tone of a review.
+## *Description of Dataset*
+
+The project will utilize a publicly available dataset and additional metadata:
+
+### *IMDb Movie Reviews Dataset*  
+- **Source:** [IMDb Dataset on Kaggle](https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews)  
+- **Size:** 50,000 labeled movie reviews (balanced: 25k positive, 25k negative)  
+- **Format:** CSV file containing two columns — *review* (text) and *sentiment* (label)  
+- **Purpose:** Base dataset for training and testing the sentiment classification model  
+
+### *Enrichment Dataset (Movie Metadata)*  
+- **Source:** [TMDB Open API](https://developer.themoviedb.org/reference/intro/getting-started)  
+- **Features Added:** Movie genre, release year, and average audience rating  
+- **Purpose:** To analyze whether external factors such as genre or release period correlate with sentiment polarity  
 
 ---
 
-## 📊 Data Sources
-- **Main dataset:** IMDb Movie Reviews Dataset (from Kaggle)  
-  → Contains thousands of labeled movie reviews.  
-- **Additional dataset:** IMDb ratings or Google Trends data.  
-  → Used to enrich the dataset and compare sentiment with popularity.
+## *Plan*
+
+### *Data Collection*
+- Import IMDb dataset from Kaggle.  
+- Use TMDB API to retrieve metadata for corresponding films.  
+- Merge the two datasets on movie title and release year.  
+
+### *Data Preprocessing*
+- Clean the text (remove punctuation, stopwords, and special characters).  
+- Apply tokenization and lemmatization using NLTK.  
+- Encode sentiment labels numerically for model training.  
+
+### *Exploratory Data Analysis (EDA)*
+- Visualize word frequency distributions using word clouds.  
+- Examine sentiment proportions by genre and release year.  
+- Compute correlations between ratings and review sentiment.  
+
+### *Modeling*
+- Apply machine learning methods for classification:  
+  - Logistic Regression  
+  - Support Vector Machines (SVM)  
+  - Random Forest  
+- Evaluate models using accuracy, precision, recall, and F1 score.  
+- Optionally, test deep learning models (e.g., LSTM).  
+
+### *Visualization and Presentation*
+- Plot confusion matrices for model comparisons.  
+- Visualize average sentiment by movie genre.  
+- Present insights on patterns found in emotional language.  
 
 ---
 
-## 🧪 Methodology
-1. **Data Cleaning**  
-   - Convert all text to lowercase  
-   - Remove punctuation, stopwords, and special symbols  
-   - Tokenize and lemmatize the text  
-
-2. **Exploratory Data Analysis (EDA)**  
-   - Word frequency distributions  
-   - Word clouds for visualizing common words  
-   - Relationship between review length and sentiment  
-
-3. **Hypothesis Testing**  
-   - Are positive reviews longer than negative ones?  
-   - Does IMDb rating correlate with review sentiment?  
-
-4. **Machine Learning**  
-   - Models used: Logistic Regression, Naive Bayes, and Support Vector Machine (SVM)  
-   - Evaluation metrics: Accuracy, Precision, Recall, and F1-score  
+## *Tools and Technologies*
+- **Python** – Core language for data analysis  
+- **Pandas & NumPy** – Data handling and preprocessing  
+- **NLTK & Scikit-learn** – NLP and machine learning  
+- **Matplotlib & Seaborn** – Visualization  
+- **Jupyter Notebooks** – Documentation and reproducibility  
 
 ---
 
-## 📈 Expected Results
-- The classifier achieves around **80% accuracy** in predicting review sentiment  
-- Positive and negative reviews show distinct linguistic patterns  
-- Sentiment polarity generally aligns with IMDb movie ratings  
+## *Expected Outcomes*
+- A machine learning model capable of classifying movie reviews by sentiment  
+- Identification of key linguistic features linked with positive or negative opinions  
+- Insights into how genre or release year influences audience reactions  
+- Visual tools summarizing sentiment trends across thousands of reviews  
 
 ---
 
-## ⚠️ Limitations and Future Work
-- Dataset is in English, so results may not generalize to other languages  
-- Class imbalance (e.g., more positive than negative reviews) may affect model accuracy  
-- Future improvements: include Turkish reviews or apply deep learning models such as LSTM or BERT  
+## *Potential Challenges*
+- Ambiguity in review language (e.g., sarcasm or mixed emotions)  
+- Balancing data and avoiding overfitting  
+- Handling long and unstructured text  
+- Computational cost of deep learning models on large text data  
 
 ---
 
-## 🧰 Technologies Used
-- **Language:** Python 3.11  
-- **Libraries:** pandas, numpy, matplotlib, seaborn, scikit-learn, nltk, wordcloud  
+## *Ethical Considerations*
+- All data sources are publicly available and anonymized.  
+- No personal or sensitive user data is included.  
+- Project follows ethical guidelines for data collection and AI usage.  
 
 ---
 
-## 📦 Installation
-To install all dependencies, run the following command in your terminal:
-
-```
-pip install -r requirements.txt
-```
+## *AI Usage Statement*
+Parts of this README and project plan were prepared with assistance from **ChatGPT (GPT-5)**.  
+All generated content was reviewed, verified, and edited by the author to ensure academic integrity and compliance with course requirements.
 
 ---
 
-## 🧠 AI Usage Statement
-This README and project design were partially prepared with assistance from ChatGPT (GPT-5).  
-All generated content was reviewed and adapted for academic purposes.
-
----
-
-## 📅 Timeline
-| Date | Task |
-|------|------|
-| October 31 | Project proposal (README.md + data plan) |
-| November 28 | Data collection and EDA |
-| January 2 | Apply machine learning models |
-| January 9 | Final submission |
-
----
-
-## 📎 How to Run the Project
-```
-git clone https://github.com/yourusername/movie-sentiment-analysis.git
-cd movie-sentiment-analysis
-pip install -r requirements.txt
-python main.py
-```
-
----
-
-## ✉️ Contact
-For any questions or collaboration opportunities, please contact:  
-📧 your.email@example.com
+## *References*
+- [IMDb Dataset on Kaggle](https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews)  
+- [TMDB Open API](https://developer.themoviedb.org/reference/intro/getting-started)  
+- [NLTK Documentation](https://www.nltk.org/)  
+- [Scikit-learn Documentation](https://scikit-learn.org/stable/)  
