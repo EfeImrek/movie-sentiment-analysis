@@ -92,8 +92,14 @@ The analysis is limited to movie reviews and metadata for educational and resear
 
 ## AI Usage Statement
 
-This README and parts of the project plan were drafted with assistance from **ChatGPT (GPT-5)** to improve structure, clarity, and English expression.  
-All content was reviewed and refined by the project author to ensure originality and compliance with academic integrity standards.
+Portions of this README and the initial project outline were generated with assistance from ChatGPT (GPT-5).  
+The tool was used exclusively to improve the clarity, grammar, and organization of the text.  
+
+All analytical decisions, dataset selection, and final wording were completed and verified by the author.  
+The use of AI was limited to language support and did not involve automated code or data generation.  
+
+This declaration is made to ensure full transparency and compliance with the course’s academic integrity policy.
+
 
 ---
 
