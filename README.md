@@ -30,6 +30,9 @@ project-root/
 ├── requirements.txt
 └── README.md
 ```
+## Analysis Notebook
+You can view the full exploratory data analysis and hypothesis testing here:  
+[EDA & Hypothesis Testing Notebook](analysis/eda_hypothesis_tests.ipynb)
 
 ## Setup & How to Run
 
