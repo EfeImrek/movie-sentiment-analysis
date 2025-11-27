@@ -1,111 +1,125 @@
-# Movie Reviews Sentiment Analysis
+# Movie Dataset Analysis Project
 
 ## Overview
+This project performs exploratory data analysis (EDA) and statistical hypothesis testing on the IMDb 5000 Movie Dataset. The goal is to identify patterns and relationships among movie-level variables such as IMDb score, budget, gross revenue, release year, and genre. This document represents the deliverable for **Milestone 1 (28 November)**. Machine learning, sentiment analysis, and metadata enrichment will be implemented in future milestones.
 
-This project explores how natural language processing (NLP) techniques can be applied to classify movie reviews based on sentiment.  
-The main objective is to develop a model that automatically distinguishes between **positive**, **negative**, and **neutral** opinions expressed in text reviews.  
+## Dataset
+Source: Kaggle — IMDB 5000 Movie Dataset  
+File used: `movie_metadata.csv`
 
-By analyzing a large dataset of user-generated movie reviews, this study seeks to understand how textual patterns, word choices, and tone reflect emotional attitudes toward films.
+Main columns used:
+- movie_title  
+- genres  
+- title_year  
+- budget  
+- gross  
+- imdb_score  
 
----
+Note: Only movie-level metadata is used at this stage. Review-level sentiment data and TMDB enrichment will be added later.
 
-## Motivation
+## Project Structure
+```
+project-root/
+│
+├── data/
+│   └── movie_metadata.csv
+│
+├── analysis/
+│   └── eda_hypothesis_tests.ipynb  (or .py)
+│
+├── requirements.txt
+└── README.md
+```
 
-Millions of online users share their opinions about movies every day.  
-These reviews influence audience decisions and provide valuable insights into collective perceptions of storytelling, performance, and direction.  
+## Setup & How to Run
 
-Through sentiment analysis, we can uncover linguistic trends associated with satisfaction or disappointment and visualize how viewers’ opinions vary across different genres or release periods.
+### 1. Clone this repository
+```bash
+git clone https://github.com/EfeImrek/movie-sentiment-analysis.git
+cd movie-sentiment-analysis
+```
 
----
+### 2. Install dependencies
+```bash
+pip install -r requirements.txt
+```
 
-## Data Sources
+### 3. Run the analysis
+If using a Python script:
+```bash
+python analysis/eda_hypothesis_tests.py
+```
 
-### IMDb Movie Reviews Dataset
-- **Source:** [IMDb Dataset on Kaggle](https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews)  
-- **Content:** 50,000 labeled reviews (balanced between positive and negative)  
-- **Structure:** Two columns — `review` (text) and `sentiment` (label)  
-- **Purpose:** Primary dataset for model training and evaluation  
+If using Jupyter Notebook or Google Colab:
+- Open `analysis/eda_hypothesis_tests.ipynb`
+- Run all cells
 
-### TMDB Metadata Enrichment
-- **Source:** [TMDB Open API](https://developer.themoviedb.org/reference/intro/getting-started)  
-- **Additional Variables:** Genre, release year, and user rating  
-- **Purpose:** To explore how movie characteristics correlate with audience sentiment  
+## Exploratory Data Analysis (EDA)
 
----
+The following analyses were conducted:
 
-## Methodology
+### IMDb Score Distribution
+A histogram was plotted to observe how IMDb scores are distributed across the dataset.
 
-### Data Preparation
-1. Load IMDb data and clean text by removing punctuation, HTML tags, and special symbols.  
-2. Tokenize and lemmatize text using [NLTK](https://www.nltk.org/).  
-3. Merge movie metadata obtained from TMDB API.  
-4. Encode sentiment labels for machine learning processing.  
+### Budget Distribution
+Budgets show heavy right skew with a long tail of extremely high-budget productions.
 
-### Exploratory Data Analysis
-- Visualize most frequent words using word clouds.  
-- Compare sentiment ratios by movie genre and release decade.  
-- Explore relationships between average ratings and sentiment.  
+### Budget vs Gross Revenue
+A scatterplot was used to examine whether higher budgets correlate with higher revenue.
 
-### Modeling
-- Apply multiple classification algorithms:
-  - Logistic Regression  
-  - Random Forest  
-  - Support Vector Machine (SVM)  
-- Evaluate model performance with accuracy, F1-score, and confusion matrices.  
-- Optionally, experiment with a recurrent neural network (LSTM) for deeper text understanding.  
+### Number of Films per Year
+A count plot was generated to detect trends in film production over the years.
 
----
+### Genre Analysis
+Genres were extracted from the `genres` column by taking the first listed genre (main_genre).  
+A bar chart shows the distribution of main genres.
 
-## Tools and Libraries
+### Average IMDb Score by Genre
+Mean IMDb scores were computed for each main genre.
 
-- **Python** — primary programming language  
-- **Pandas, NumPy** — data manipulation and transformation  
-- **NLTK, Scikit-learn** — NLP preprocessing and model training  
-- **Matplotlib, Seaborn** — visualization of results  
-- **Jupyter Notebook** — workflow documentation and reproducibility  
+### Correlation Heatmap
+A heatmap of correlations among numerical variables (IMDb score, budget, gross, title_year) was generated.
 
----
+## Hypothesis Testing
 
-## Expected Outcomes
+Three two-sample t-tests were conducted:
 
-- A functional text classification model that predicts the polarity of a review.  
-- Insights into linguistic and stylistic patterns typical of positive and negative feedback.  
-- Comparative analysis of how movie characteristics (genre, release year) relate to sentiment.  
-- Visual summaries demonstrating sentiment distribution and model accuracy.
+### H1 — Drama vs Action IMDb Scores
+- **H0:** Mean IMDb scores are equal.  
+- **H1:** Mean IMDb scores differ.  
+- **Method:** Welch's t-test  
+- **Result:** *(Insert your p-value)*  
+- **Interpretation:** *(Reject / fail to reject H0)*  
 
----
+### H2 — Pre-2000 vs Post-2000 IMDb Scores
+- Films released before and after the year 2000 were compared.  
+- **Result:** *(Insert p-value)*  
+- **Interpretation:** *(Reject / fail to reject H0)*  
+
+### H3 — High-Budget vs Low-Budget IMDb Scores
+- The median budget was used as the threshold.  
+- **Result:** *(Insert p-value)*  
+- **Interpretation:** *(Reject / fail to reject H0)*  
+
+## Key Findings Summary
+- The most frequent primary genres are *(insert)*.  
+- Budget and gross revenue show a positive but noisy correlation.  
+- Depending on hypothesis outcomes, some genre or time-period groups may have significantly different IMDb scores.
+
+(Replace placeholders with values from your outputs.)
 
 ## Limitations
+- The dataset may include missing or inaccurate budget/gross values.  
+- Genre information may include multiple genres; only the first was used as the primary genre.  
+- Sentiment analysis and TMDB metadata are not yet included.
 
-- Text ambiguity (sarcasm or irony) may reduce classification accuracy.  
-- Possible overfitting due to limited vocabulary diversity.  
-- Computational complexity of deep learning methods for large-scale text data.  
+## Future Work
+- Review-level sentiment analysis (IMDB 50K Dataset)  
+- Metadata enrichment using the TMDB API  
+- Regression or classification models (predict revenue or score)  
+- Feature engineering and model tuning  
+- Bias and fairness evaluation for ML models  
 
----
-
-## Ethical Considerations
-
-All datasets used in this project are **publicly accessible** and contain **no personal information**.  
-The analysis is limited to movie reviews and metadata for educational and research purposes.
-
----
-
-## AI Usage Statement
-
-Portions of this README and the initial project outline were generated with assistance from ChatGPT (GPT-5).  
-The tool was used exclusively to improve the clarity, grammar, and organization of the text.  
-
-All analytical decisions, dataset selection, and final wording were completed and verified by the author.  
-The use of AI was limited to language support and did not involve automated code or data generation.  
-
-This declaration is made to ensure full transparency and compliance with the course’s academic integrity policy.
-
-
----
-
-## References
-
-- [IMDb Movie Reviews Dataset on Kaggle](https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews)  
-- [TMDB API Documentation](https://developer.themoviedb.org/reference/intro/getting-started)  
-- [NLTK Official Documentation](https://www.nltk.org/)  
-- [Scikit-learn Documentation](https://scikit-learn.org/stable/)  
+## Author
+**Efe İmrek**  
+GitHub: https://github.com/EfeImrek
