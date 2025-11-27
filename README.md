@@ -17,6 +17,16 @@ Main columns used:
 
 Note: Only movie-level metadata is used at this stage. Review-level sentiment data and TMDB enrichment will be added later.
 
+## Data Availability
+
+The original Kaggle dataset (IMDB 5000 Movie Dataset) exceeds GitHub’s 25MB file size limit.
+Therefore, the dataset is not included directly in this repository.
+
+You can download the dataset from:
+https://www.kaggle.com/datasets/carolzhangdc/imdb-5000-movie-dataset
+
+After downloading, place `movie_metadata.csv` into the `data/` folder before running the notebook.
+
 ## Project Structure
 ```
 project-root/
