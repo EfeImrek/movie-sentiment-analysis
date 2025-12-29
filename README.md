@@ -1,7 +1,8 @@
 # Movie Dataset Analysis Project
 
 ## Overview
-This project performs exploratory data analysis (EDA) and statistical hypothesis testing on the IMDb 5000 Movie Dataset. The goal is to identify patterns and relationships among movie-level variables such as IMDb score, budget, gross revenue, release year, and genre. This document represents the deliverable for **Milestone 1 (28 November)**. Machine learning, sentiment analysis, and metadata enrichment will be implemented in future milestones.
+This project performs exploratory data analysis (EDA) and statistical hypothesis testing on the IMDb 5000 Movie Dataset. The goal is to identify patterns and relationships among movie-level variables such as IMDb score, budget, gross revenue, release year, and genre. This document represents the deliverable for **Milestone 1 (28 November)**. Machine learning regression has been implemented as part of the January milestone. Sentiment analysis and metadata enrichment will be implemented in future milestones.
+
 
 ## Dataset
 Source: Kaggle — IMDB 5000 Movie Dataset  
@@ -112,7 +113,35 @@ Three two-sample t-tests were conducted:
 ### H3 — High-Budget vs Low-Budget IMDb Scores
 - The median budget was used as the threshold.  
 - **Result:** *(Insert p-value)*  
-- **Interpretation:** *(Reject / fail to reject H0)*  
+- **Interpretation:** *(Reject / fail to reject H0)*
+
+## Jan 2 – Machine Learning (Regression)
+
+In this milestone, supervised machine learning regression models were applied to predict IMDb scores using movie-level metadata.
+
+### Problem Definition
+The objective is to predict a movie’s IMDb score using basic metadata features such as budget, gross revenue, release year, and main genre.
+
+### Feature Engineering
+Genres were processed by extracting the first listed genre as the main genre. Missing values in numerical variables were handled using median imputation, and records with missing release year were removed.
+
+### Models
+Two regression models were trained and evaluated:
+- Linear Regression
+- Random Forest Regressor
+
+### Results
+
+| Model | MAE | RMSE | R² |
+|------|-----|------|----|
+| Linear Regression | 0.8396 | 1.0787 | 0.024 |
+| Random Forest | 0.7279 | 0.9666 | 0.216 |
+
+### Interpretation
+Linear Regression achieved limited performance, indicating that the relationship between the selected metadata features and IMDb scores is weakly linear. Random Forest Regressor significantly improved performance, suggesting that non-linear relationships play an important role in explaining IMDb ratings.
+
+### Limitations and Future Work
+The analysis is limited by the simplicity of the feature set and the absence of textual or user-generated content. Future work may include sentiment analysis of movie reviews, metadata enrichment using external APIs, and model tuning to improve predictive performance.
 
 ## Key Findings Summary
 - The most frequent primary genres are *(insert)*.  
